@@ -1,19 +1,18 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from '../contexts/ThemeContext'
+import { GlobalContext } from '../contexts/GlobalState'
 
 const Booklist = () => {
-	const { isLightTheme, light, dark } = useContext(ThemeContext)
-	const theme = isLightTheme ? light : dark
-
+	const { theme } = useContext(GlobalContext)
+	const mode = theme.isLightTheme ? theme.light : theme.dark
 	return (
 		<div
 			className='book-list'
-			style={{ background: theme.bg, color: theme.syntax }}
+			style={{ color: mode.syntax, background: mode.bg }}
 		>
 			<ul>
-				<li style={{ background: theme.ui }}>The Ghost Wars</li>
-				<li style={{ background: theme.ui }}>The Case of Exploding Mangoes</li>
-				<li style={{ background: theme.ui }}>A Thousand Splendid Suns</li>
+				<li style={{ background: mode.ui }}>The Fifth Mountain</li>
+				<li style={{ background: mode.ui }}>Anxious People</li>
+				<li style={{ background: mode.ui }}>Man Called Ove</li>
 			</ul>
 		</div>
 	)
